@@ -4,10 +4,12 @@ import re
 import requests
 import PyPDF2
 
+pdfsFolder = "folder/to/your/pdfs"
+
 def downloadFiles():
     for nm, i in zip(allFileUrlNames, allFileInfos): # download files, and make saveNames
         yr, nord = i
-        sn = 'C:/Users/MiV/Desktop/_projects/Python Projects/lotoScrape/pdfs/' + str(yr) + '_' + str(
+        sn = pdfsFolder + str(yr) + '_' + str(
             nord) + '.pdf'
         try:
             mf = requests.get(nm, allow_redirects=True)
@@ -31,7 +33,7 @@ def getSaveNames():
             yearOrder[0], yearOrder[1] = yearOrder[1], yearOrder[0]
 
         allFileInfos.append((yearOrder[0], yearOrder[1]))
-        fileSaveNames.append('C:/Users/MiV/Desktop/_projects/Python Projects/lotoScrape/pdfs/' + str(yearOrder[0]) + '_' + str(
+        fileSaveNames.append(pdfsFolder + str(yearOrder[0]) + '_' + str(
             yearOrder[1]) + '.pdf')
 
 def fromPdfToTxt():
